@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+
+  user-select: none;
+}
+
+body {
+  padding: 0;
+  position: relative;
+  background: rgb(89, 13, 106);
+
+  font-family: "Montserrat", sans-serif;
+  background: radial-gradient(
+    circle,
+    rgba(89, 13, 106, 1) 0%,
+    rgba(31, 0, 34, 1) 100%
+  );
+  &.green {
+    background-color: rgb(16 161 22);
+    background: radial-gradient(circle, rgb(24 255 39) 0%, rgb(7 38 0) 100%);
+  }
+}
+
+.App {
+  &.green {
+    background-color: rgb(16 161 22);
+    background: radial-gradient(circle, rgb(24 255 39) 0%, rgb(7 38 0) 100%);
+  }
+}
+
+.grid {
+  position: absolute;
+  width: 358px;
+  height: 363px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.popit {
+  transform: scale(0.9);
+  margin-top: -2vh;
+  width: 400px;
+  height: 400px;
+  background-size: 100%;
+  background-position: center center;
+  position: relative;
+}
+
+.cell {
+  width: 57px;
+  height: 60px;
+  cursor: pointer;
+  background-size: 107%;
+  background-position: center center;
+  border-radius: 10px;
+  opacity: 0;
+}
+.cell:after {
+  content: "";
+}
+.cell.active {
+  background: url("./assets/img/active-button.png");
+  background-size: 118%;
+  background-position: center center;
+  opacity: 1;
+  opacity: 0.7;
+}
+
+.game-page {
+  padding-top: 3vh;
+}
+.res {
+  padding: 10px 40px;
+  font-size: 60px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  align-items: center;
+  .buba-score-icon {
+    width: 54px !important;
+  }
+}
+.res.is-purple {
+  background: rgb(102, 25, 175);
+  color: #fff;
+  border-radius: 15px;
+}
+
+.container {
+  max-width: 450px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App {
+  position: relative;
+  height: 100vh;
+  padding-bottom: 20px;
+}
+.buba-score-icon {
+  width: 40px !important;
+  margin-right: 10px;
+}
+.clickPerOneNum {
+  position: absolute;
+  color: #fff;
+  font-size: 30px;
+}
+
+.menu {
+  z-index: 9999;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  &__item {
+    border: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.429);
+    color: #e7e7e7;
+    padding: 4px 24px;
+    border-radius: 10px;
+    transition: 0.25s ease opacity;
+    width: 100%;
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+    img {
+      filter: invert(1);
+      width: 30px;
+    }
+    cursor: pointer;
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.energy-bar {
+  width: 90%;
+  height: 2px;
+  background-color: rgba(224, 224, 224, 0.251);
+  border-radius: 5px;
+  position: relative;
+  margin: 9px auto;
+  margin-bottom: 24px;
+  span {
+    height: 2px;
+    border-radius: 5px;
+    background-color: rgb(218 81 145);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 1s ease width;
+  }
+}
+.popit {
+  color: #fff;
+}
+@keyframes float {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-130px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .energy-bar {
+    width: 80%;
+  }
+  .res {
+    font-size: 60px;
+    padding-top: 30px;
+  }
+  .game-page {
+    padding-top: 2vh;
+  }
+  .popit {
+    margin-top: 2vh;
+    transform: scale(0.85);
+    &:active {
+      transform: scale(0.82);
+    }
+  }
+  .res {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 0;
+    line-height: 0.8;
+    span {
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+  }
+  .popit {
+    margin-top: 0vh;
+  }
+
+  .preloader,
+  .App {
+    min-height: 700px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .popit {
+    margin-top: -4vh;
+    transform: scale(0.75);
+    &:active {
+      transform: scale(0.71);
+    }
+  }
+  .res {
+    font-size: 44px;
+  }
+}
+
+.popit {
+  transition: 0.2s ease transform;
+  &:active {
+    transform: scale(0.85);
+  }
+}
